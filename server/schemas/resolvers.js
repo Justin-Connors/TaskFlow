@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Task } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -16,6 +16,16 @@ const resolvers = {
       const user = await User.findById(args.userId).select("-email");
       return user;
     },
+    task: async (parent, args) => {
+      const task = await Task.find({
+        taskCreatedBy: args.taskCreatedBy,
+      });
+      return task;
+    },
+    taskById: async (parent, args) => {
+      const task = await Task.findById(args.taskId);
+      return task;
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -29,6 +39,22 @@ const resolvers = {
         return await User.findByIdAndUpdate(context.user._id, args, {
           new: true,
         });
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+    addTask: async (parent, args, context) => {
+      if (context.user) {
+        const task = await Task.create(args);
+        return task;
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+    updateTask: async (parent, args, context) => {
+      if (context.user) {
+        const task = await Task.findByIdAndUpdate(args.taskId, args, {
+          new: true,
+        });
+        return task;
       }
       throw new AuthenticationError("Not logged in");
     },
