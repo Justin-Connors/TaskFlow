@@ -52,8 +52,8 @@ const typeDefs = gql`
       taskAssignedTo: String
       taskCreatedBy: String!
       taskCreatedDate: String!
-      taskUpdatedDate: String!
-      taskUpdatedBy: String!
+      taskUpdatedDate: String
+      taskUpdatedBy: String
       taskComments: String
       taskLabels: [String]
     ): Task
@@ -68,8 +68,8 @@ const typeDefs = gql`
       taskAssignedTo: String
       taskCreatedBy: String
       taskCreatedDate: String
-      taskUpdatedDate: String
-      taskUpdatedBy: String
+      taskUpdatedDate: String!
+      taskUpdatedBy: String!
       taskComments: String
       taskLabels: [String]
     ): Task

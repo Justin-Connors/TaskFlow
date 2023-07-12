@@ -23,3 +23,45 @@ export const QUERY_USER_BY_ID = gql`
     }
   }
 `;
+
+// Task query to get task data
+export const QUERY_TASK = gql`
+  query task {
+    task {
+      _id
+      taskName
+      taskDescription
+      taskDueDate
+      taskStatus
+      taskPriority
+      taskAssignedTo
+      taskCreatedBy
+      taskCreatedDate
+      taskUpdatedDate
+      taskUpdatedBy
+      taskComments
+      taskLabels
+    }
+  }
+`;
+
+// Task query to get task data by ID
+export const QUERY_TASK_BY_ID = gql`
+  query taskById($taskId: ID!) {
+    taskById(taskId: $taskId) {
+      _id
+      taskName
+      taskDescription
+      taskDueDate
+      taskStatus
+      taskPriority
+      taskAssignedTo
+      taskCreatedBy
+      taskCreatedDate
+      taskUpdatedDate
+      taskUpdatedBy
+      taskComments
+      taskLabels
+    }
+  }
+`;

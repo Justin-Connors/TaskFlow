@@ -33,3 +33,50 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+// Mutation to add a task
+export const ADD_TASK = gql`
+  mutation addTask(
+    $taskName: String!
+    $taskDescription: String!
+    $taskDueDate: String
+    $taskStatus: [String]
+    $taskPriority: [String]
+    $taskAssignedTo: String
+    $taskCreatedBy: String!
+    $taskCreatedDate: String!
+    $taskUpdatedDate: String
+    $taskUpdatedBy: String
+    $taskComments: String
+    $taskLabels: [String]
+  ) {
+    addTask(
+      taskName: $taskName
+      taskDescription: $taskDescription
+      taskDueDate: $taskDueDate
+      taskStatus: $taskStatus
+      taskPriority: $taskPriority
+      taskAssignedTo: $taskAssignedTo
+      taskCreatedBy: $taskCreatedBy
+      taskCreatedDate: $taskCreatedDate
+      taskUpdatedDate: $taskUpdatedDate
+      taskUpdatedBy: $taskUpdatedBy
+      taskComments: $taskComments
+      taskLabels: $taskLabels
+    ) {
+      _id
+      taskName
+      taskDescription
+      taskDueDate
+      taskStatus
+      taskPriority
+      taskAssignedTo
+      taskCreatedBy
+      taskCreatedDate
+      taskUpdatedDate
+      taskUpdatedBy
+      taskComments
+      taskLabels
+    }
+  }
+`;
