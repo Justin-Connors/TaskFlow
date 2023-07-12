@@ -44,7 +44,7 @@ export const ADD_TASK = gql`
     $taskPriority: [String]
     $taskAssignedTo: String
     $taskCreatedBy: String!
-    $taskCreatedDate: String!
+    $taskCreatedDate: String
     $taskUpdatedDate: String
     $taskUpdatedBy: String
     $taskComments: String

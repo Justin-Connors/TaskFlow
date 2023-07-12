@@ -18,7 +18,7 @@ const resolvers = {
     },
     task: async (parent, args) => {
       const task = await Task.find({
-        taskCreatedBy: args.taskCreatedBy,
+        $or: [{ taskCreatedBy: args.userId }, { taskAssignedTo: args.userId }],
       });
       return task;
     },
@@ -42,21 +42,15 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
-    addTask: async (parent, args, context) => {
-      if (context.user) {
-        const task = await Task.create(args);
-        return task;
-      }
-      throw new AuthenticationError("Not logged in");
+    addTask: async (parent, args) => {
+      const task = await Task.create(args);
+      return task;
     },
     updateTask: async (parent, args, context) => {
-      if (context.user) {
-        const task = await Task.findByIdAndUpdate(args.taskId, args, {
-          new: true,
-        });
-        return task;
-      }
-      throw new AuthenticationError("Not logged in");
+      const task = await Task.findByIdAndUpdate(args.taskId, args, {
+        new: true,
+      });
+      return task;
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

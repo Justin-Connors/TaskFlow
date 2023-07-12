@@ -42,7 +42,6 @@ const taskSchema = new Schema({
   },
   taskCreatedDate: {
     type: Date,
-    required: true,
     default: Date.now,
   },
   taskUpdatedDate: {
