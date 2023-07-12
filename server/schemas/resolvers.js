@@ -16,10 +16,8 @@ const resolvers = {
       const user = await User.findById(args.userId).select("-email");
       return user;
     },
-    task: async (parent, args) => {
-      const task = await Task.find({
-        $or: [{ taskCreatedBy: args.userId }, { taskAssignedTo: args.userId }],
-      });
+    task: async (parent, args, context) => {
+      const task = await Task.find({});
       return task;
     },
     taskById: async (parent, args) => {
