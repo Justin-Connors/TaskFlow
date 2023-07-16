@@ -49,11 +49,11 @@ function App() {
       <Router>
         <div>
           <Nav />
-          <main>
+          <main className="mainSize">
             <Routes>
               <Route path="/" element={<Home title="TaskFlow" />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup title="Sign-Up" />} />
+              <Route path="/login" element={<Login title="Login" />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </main>

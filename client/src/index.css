@@ -1,0 +1,9 @@
+.mainSize {
+  min-height: calc(100vh - 128px);
+}
+
+@media only screen and (min-width: 600px) {
+  .mainSize {
+    min-height: calc(100vh - 136px);
+  }
+}
