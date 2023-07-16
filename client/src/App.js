@@ -51,7 +51,7 @@ function App() {
           <Nav />
           <main>
             <Routes>
-              <Route path="/" element={<Home title="Metrics" />} />
+              <Route path="/" element={<Home title="TaskFlow" />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="*" element={<Navigate to="/" />} />
