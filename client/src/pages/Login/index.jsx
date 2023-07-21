@@ -46,6 +46,11 @@ const Login = (props) => {
     }
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState({ ...formState, [name]: value });
+  };
+
   return (
     <Grid container component="main" className={styles.sizeFix}>
       <CssBaseline />
@@ -92,6 +97,7 @@ const Login = (props) => {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={handleChange}
             />
             <TextField
               margin="normal"
@@ -102,6 +108,7 @@ const Login = (props) => {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handleChange}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
