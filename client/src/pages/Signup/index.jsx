@@ -62,7 +62,7 @@ const Signup = (props) => {
             alignItmes: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -131,7 +131,9 @@ const Signup = (props) => {
             </Button>
             <Grid container>
               {/* <Grid item xs>errors go here</Grid> */}
-              {/* <Grid item>errors go here</Grid> */}
+              <Link href="/login" variant="body2">
+                {"Already have an account? Login"}
+              </Link>
             </Grid>
           </Box>
         </Box>
