@@ -66,7 +66,7 @@ const Signup = (props) => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign up
           </Typography>
           <Box
             component="form"
@@ -74,6 +74,24 @@ const Signup = (props) => {
             onSubmit={handleFormSubmit}
             sx={{ mt: 1 }}
           >
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="firstname"
+              label="First Name"
+              type="firstname"
+              id="firstname"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="lastname"
+              label="Last Name"
+              type="lastname"
+              id="lastname"
+            />
             <TextField
               margin="normal"
               required
@@ -94,9 +112,14 @@ const Signup = (props) => {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="passwordconfirm"
+              label="Confirm Password"
+              type="passwordconfirm"
+              id="passwordconfirm"
             />
             <Button
               type="submit"
@@ -104,19 +127,11 @@ const Signup = (props) => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Create Account
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
+              {/* <Grid item xs>errors go here</Grid> */}
+              {/* <Grid item>errors go here</Grid> */}
             </Grid>
           </Box>
         </Box>
