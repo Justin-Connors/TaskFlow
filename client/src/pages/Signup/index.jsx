@@ -3,8 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
@@ -17,9 +15,11 @@ import { ADD_USER } from "../../utils/mutations";
 import styles from "./Signup.module.css";
 
 const Signup = (props) => {
-  const [Signup] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER);
   const [errorMessage, setErrorMessage] = useState("");
   const [formState, setFormState] = useState({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
   });
@@ -29,12 +29,26 @@ const Signup = (props) => {
   }, [props.title]);
 
   const handleFormSubmit = async (e) => {
-    e.preventDefault();
     try {
-      console.log("works");
+      e.preventDefault();
+      const mutationResponse = await addUser({
+        variables: {
+          email: formState.email,
+          password: formState.password,
+          firstName: formState.firstName,
+          lastName: formState.lastName,
+        },
+      });
+      const token = mutationResponse.data.addUser.token;
+      Auth.login(token);
     } catch (e) {
-      console.log("error");
+      console.log(e, "error");
     }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState({ ...formState, [name]: value });
   };
 
   return (
@@ -78,19 +92,21 @@ const Signup = (props) => {
               margin="normal"
               required
               fullWidth
-              name="firstname"
+              name="firstName"
               label="First Name"
-              type="firstname"
-              id="firstname"
+              type="firstName"
+              id="firstName"
+              onChange={handleChange}
             />
             <TextField
               margin="normal"
               required
               fullWidth
-              name="lastname"
+              name="lastName"
               label="Last Name"
-              type="lastname"
-              id="lastname"
+              type="lastName"
+              id="lastName"
+              onChange={handleChange}
             />
             <TextField
               margin="normal"
@@ -100,6 +116,7 @@ const Signup = (props) => {
               label="Email Address"
               name="email"
               autoComplete="email"
+              onChange={handleChange}
               autoFocus
             />
             <TextField
@@ -110,16 +127,8 @@ const Signup = (props) => {
               label="Password"
               type="password"
               id="password"
+              onChange={handleChange}
               autoComplete="current-password"
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="passwordconfirm"
-              label="Confirm Password"
-              type="passwordconfirm"
-              id="passwordconfirm"
             />
             <Button
               type="submit"
