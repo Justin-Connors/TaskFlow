@@ -43,8 +43,9 @@ const Home = () => {
         sm={6}
         sx={{
           backgroundImage: `url(${background})`,
-          backgroundSize: "cover",
+          backgroundSize: "stretch",
           backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
           height: "100%",
           minHeight: "300px",
         }}
