@@ -1,32 +1,24 @@
 import React from "react";
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
+import { Button, Grid, Typography } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import Typography from "@mui/material/Typography";
 import background from "../../assets/background.png";
 
 const Home = () => {
   return (
-    <Grid
-      container
-      spacing={2}
-      sx={{ width: "90%", marginTop: "4rem", marginLeft: "1rem" }}
-    >
-      <Grid item xs={6}>
+    <Grid container spacing={2} sx={{ width: "90%", margin: "4rem auto" }}>
+      <Grid item xs={12} sm={6}>
         <Typography
           variant="h3"
           component="div"
-          color="inherit"
-          sx={{ fontFamily: "Gill Sans, sans-serif" }}
+          sx={{ fontFamily: "Gill Sans, sans-serif", fontWeight: 700 }}
         >
-          Start tracking your projects progress with TaskFlow!
+          Start tracking your project's progress with TaskFlow!
         </Typography>
 
         <Typography
-          variant="caption"
-          component="div"
-          color="inherit"
-          sx={{ marginTop: "1rem" }}
+          variant="subtitle1"
+          color="textSecondary"
+          sx={{ mt: "1rem" }}
         >
           TaskFlow is a project management tool that helps you organize your
           projects and tasks.
@@ -35,24 +27,26 @@ const Home = () => {
           variant="outlined"
           href="#"
           color="inherit"
-          fontSize="large"
           endIcon={<SendIcon />}
           sx={{
+            mt: "1.5rem",
             textTransform: "none",
-            width: "100px",
-            marginTop: "1rem",
+            width: "150px",
           }}
         >
-          TaskFlow
+          Try TaskFlow
         </Button>
       </Grid>
       <Grid
         item
-        xs={6}
+        xs={12}
+        sm={6}
         sx={{
           backgroundImage: `url(${background})`,
           backgroundSize: "cover",
-          verticalAlign: "bottom",
+          backgroundPosition: "center",
+          height: "100%",
+          minHeight: "300px",
         }}
       />
     </Grid>
