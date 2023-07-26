@@ -1,11 +1,24 @@
 import React from "react";
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, CssBaseline, Grid, Typography } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import background from "../../assets/background.png";
+import background from "../../assets/homeImg.png";
+import styled from "@mui/material/styles/styled";
+
+const Background = styled("div")({
+  position: "absolute",
+  width: "100%",
+  height: "90%",
+  backgroundImage: `url(${background})`,
+  backgroundPosition: "right",
+  backgroundSize: "contain",
+  backgroundRepeat: "no-repeat",
+  zIndex: -1,
+});
 
 const Home = () => {
   return (
-    <Grid container spacing={2} sx={{ width: "90%", margin: "4rem auto" }}>
+    <Grid container spacing={2}>
+      <CssBaseline />
       <Grid item xs={12} sm={6}>
         <Typography
           variant="h3"
@@ -37,19 +50,7 @@ const Home = () => {
           Try TaskFlow
         </Button>
       </Grid>
-      <Grid
-        item
-        xs={12}
-        sm={6}
-        sx={{
-          backgroundImage: `url(${background})`,
-          backgroundSize: "stretch",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          height: "100%",
-          minHeight: "300px",
-        }}
-      />
+      <Background />
     </Grid>
   );
 };
