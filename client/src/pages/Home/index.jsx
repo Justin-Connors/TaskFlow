@@ -3,21 +3,24 @@ import { Button, CssBaseline, Grid, Typography } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import background from "../../assets/homeImg.png";
 import styled from "@mui/material/styles/styled";
+import styles from "./Home.module.css";
 
 const Background = styled("div")({
   position: "absolute",
-  width: "100%",
-  height: "90%",
+  width: "75%",
+  height: "75%",
   backgroundImage: `url(${background})`,
-  backgroundPosition: "right",
+  backgroundPosition: "right bottom",
+  right: 15,
+  bottom: 100,
   backgroundSize: "contain",
   backgroundRepeat: "no-repeat",
-  zIndex: -1,
+  zIndex: -1000,
 });
 
 const Home = () => {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} className={styles.sizeFix}>
       <CssBaseline />
       <Grid item xs={12} sm={6}>
         <Typography
