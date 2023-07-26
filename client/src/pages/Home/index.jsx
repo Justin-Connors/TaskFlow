@@ -6,30 +6,41 @@ import styled from "@mui/material/styles/styled";
 import styles from "./Home.module.css";
 
 // may get used at a later time
-// const Background = styled("div")({
-//   position: "absolute",
-//   width: "75%",
-//   height: "75%",
-//   backgroundImage: `url(${background})`,
-//   backgroundPosition: "right bottom",
-//   right: 15,
-//   bottom: 100,
-//   backgroundSize: "contain",
-//   backgroundRepeat: "no-repeat",
-//   zIndex: -1000,
-// });
+const Background = styled("div")({
+  position: "absolute",
+  width: "75%",
+  height: "75%",
+  backgroundImage: `url(${background})`,
+  backgroundPosition: "right bottom",
+  right: 15,
+  bottom: 100,
+  backgroundSize: "contain",
+  backgroundRepeat: "no-repeat",
+  zIndex: -1000,
+});
 
 const Home = () => {
   return (
     <Grid container spacing={2} className={styles.sizeFix}>
       <CssBaseline />
-      <Grid item xs={12} sm={6} sx={{ margin: "auto", textAlign: "center" }}>
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        sx={{
+          margin: "1rem 1rem auto",
+          textAlign: "center",
+          position: "absolute",
+          top: "15%",
+        }}
+      >
         <Typography
           variant="h3"
           component="div"
           sx={{ fontFamily: "Gill Sans, sans-serif", fontWeight: 700 }}
         >
-          Start tracking your project's progress with TaskFlow!
+          Start tracking your project's progress with{" "}
+          <span style={{ color: "#3861ad" }}>TaskFlow!</span>
         </Typography>
 
         <Typography
@@ -55,6 +66,7 @@ const Home = () => {
           Try TaskFlow
         </Button>
       </Grid>
+      <Background />
     </Grid>
   );
 };
