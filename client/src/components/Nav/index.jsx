@@ -11,6 +11,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import logo from "../../assets/TaskFlow-Logo.png";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
+import PersonIcon from "@mui/icons-material/Person";
+import AddchartIcon from "@mui/icons-material/Addchart";
 import auth from "../../utils/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -40,22 +42,48 @@ const Nav = () => {
           />
         </Typography>
         <Stack direction="row" spacing={2}>
-          <Tooltip title="Home">
+          <IconButton
+            size="large"
+            color="inherit"
+            aria-label="Home"
+            onClick={() => navigate("/")}
+          >
+            <Tooltip title="Home">
+              <HomeIcon />
+            </Tooltip>
+          </IconButton>
+          {auth.loggedIn() ? (
             <IconButton
               size="large"
               color="inherit"
-              aria-label="Home"
-              onClick={() => navigate("/")}
+              aria-label="Profile"
+              onClick={() => navigate("/profile")}
             >
-              <HomeIcon />
+              <Tooltip title="Profile">
+                <PersonIcon />
+              </Tooltip>
             </IconButton>
-          </Tooltip>
-          {auth.loggedIn() ? (
-            <Tooltip title="Logout">
-              <IconButton size="large" color="inherit" onClick={handleLogout}>
-                <LogoutIcon />
-              </IconButton>
+          ) : (
+            ""
+          )}
+
+          <IconButton
+            size="large"
+            color="inherit"
+            aria-label="Create Task"
+            onClick={() => navigate("/TaskBoard")}
+          >
+            <Tooltip title="Create Task">
+              <AddchartIcon />
             </Tooltip>
+          </IconButton>
+
+          {auth.loggedIn() ? (
+            <IconButton size="large" color="inherit" onClick={handleLogout}>
+              <Tooltip title="Logout">
+                <LogoutIcon />
+              </Tooltip>
+            </IconButton>
           ) : (
             <Tooltip title="Login">
               <IconButton

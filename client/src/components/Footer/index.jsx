@@ -9,7 +9,7 @@ function Copyright() {
   return (
     <Typography variant="body1" color="white" align="center">
       {"© "}
-      <Link color="inherit" href="" className={styles.decoration}>
+      <Link color="inherit" href="#" className={styles.footerDec}>
         TaskFlow
       </Link>{" "}
       {new Date().getFullYear()}
