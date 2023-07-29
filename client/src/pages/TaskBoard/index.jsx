@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import KanbanCard from "../../components/KanbanCard";
+import styles from "./TaskBoard.module.css";
 
 const KanbanBoard = (props) => {
   const [todoItems, setTodoItems] = useState([]);
@@ -41,25 +42,20 @@ const KanbanBoard = (props) => {
       onDragEnd={handleDragEnd}
       onDragCancel={handleDragCancel}
     >
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={2}
+        className={styles.sizeFix}
+        sx={{ maxWidth: "99vw", textAlign: "center" }}
+      >
+        <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Add New Card <AddCard addNewCard={addNewCard} />
+          </Typography>
+        </Grid>
         <KanbanLane title="To Do" items={todoItems} />
         <KanbanLane title="In Progress" items={inProgressItems} />
         <KanbanLane title="Done" items={doneItems} />
-        <Grid item xs={12} sm={6} md={4} lg={3}>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Add New Card
-          </Typography>
-          <Box
-            sx={{
-              p: 2,
-              minHeight: 200,
-              bgcolor: "inherit",
-              border: "1px dashed grey",
-            }}
-          >
-            <AddCard addNewCard={addNewCard} />
-          </Box>
-        </Grid>
       </Grid>
     </DndContext>
   );

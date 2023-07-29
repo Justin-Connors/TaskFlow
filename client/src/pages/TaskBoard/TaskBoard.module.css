@@ -1,9 +1,9 @@
 .sizeFix {
-  min-height: calc(100vh - 128px);
+  min-height: calc(100vh - 112px) !important;
 }
 
 @media only screen and (min-width: 600px) {
   .sizeFix {
-    min-height: calc(100vh - 136px);
+    min-height: calc(100vh - 120px) !important;
   }
 }
