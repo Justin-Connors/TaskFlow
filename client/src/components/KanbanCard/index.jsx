@@ -39,21 +39,8 @@ const KanbanCard = ({ title, index, parent }) => {
               R
             </Avatar>
           }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
           title={`Task Title` || title}
         />
-        <CardActions disableSpacing>
-          <IconButton aria-label="add">
-            <AddCircleOutlineOutlinedIcon />
-          </IconButton>
-          <IconButton aria-label="show more">
-            <InfoOutlinedIcon />
-          </IconButton>
-        </CardActions>
       </Card>
     </div>
   );
