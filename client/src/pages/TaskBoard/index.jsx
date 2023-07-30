@@ -3,10 +3,9 @@ import { DndContext, rectIntersection } from "@dnd-kit/core";
 import KanbanLane from "../../components/KanbanLane/index";
 import AddCard from "../../components/addCard/index";
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
-import KanbanCard from "../../components/KanbanCard";
 import styles from "./TaskBoard.module.css";
+import KanbanCard from "../../components/KanbanCard/index";
 
 const KanbanBoard = (props) => {
   const [todoItems, setTodoItems] = useState([]);
@@ -46,12 +45,16 @@ const KanbanBoard = (props) => {
         container
         spacing={2}
         className={styles.sizeFix}
-        sx={{ maxWidth: "99vw", textAlign: "center" }}
+        sx={{
+          maxWidth: "98%",
+          textAlign: "center",
+        }}
       >
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Add New Card <AddCard addNewCard={addNewCard} />
           </Typography>
+          <KanbanCard />
         </Grid>
         <KanbanLane title="To Do" items={todoItems} />
         <KanbanLane title="In Progress" items={inProgressItems} />

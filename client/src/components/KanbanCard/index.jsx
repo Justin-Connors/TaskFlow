@@ -45,13 +45,7 @@ const KanbanCard = ({ title, index, parent }) => {
             </IconButton>
           }
           title={`Task Title` || title}
-          subheader="Task created date"
         />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            Task Description
-          </Typography>
-        </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add">
             <AddCircleOutlineOutlinedIcon />

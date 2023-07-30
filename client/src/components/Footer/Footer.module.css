@@ -9,5 +9,5 @@
 }
 
 .footerDec {
-  text-decoration: none;
+  text-decoration: none !important;
 }
